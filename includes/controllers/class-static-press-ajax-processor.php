@@ -115,6 +115,15 @@ abstract class Static_Press_Ajax_Processor {
 		$this->json_output( $json_array );
 	}
 
+    public function execute_cmd() {
+        try {
+            $json_array = $this->process_ajax_request();
+        } catch ( Static_Press_Business_Logic_Exception $exception ) {
+            return $this->convert_exception_to_array( $exception );
+        }
+        return $json_array;
+    }
+
 	/**
 	 * Converts exception to array.
 	 *

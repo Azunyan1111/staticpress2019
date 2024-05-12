@@ -87,3 +87,8 @@ register_deactivation_hook( __FILE__, array( $staticpress, 'deactivate' ) );
 if ( is_admin() ) {
 	new Static_Press_Admin( plugin_basename( __FILE__ ) );
 }
+
+if (defined('WP_CLI') && WP_CLI) {
+    include_once dirname(__FILE__) . '/class-staticpress-cli.php';
+    WP_CLI::add_command('staticpress2019', 'StaticPress_CLI_Command');
+}

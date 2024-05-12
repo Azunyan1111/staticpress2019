@@ -2,3 +2,6 @@
 .idea
 .vscode
 .phpunit.result.cache
+tmp/
+wp-cli.phar
+staticpress2019.zip

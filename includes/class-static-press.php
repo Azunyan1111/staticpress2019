@@ -189,6 +189,18 @@ class Static_Press {
 		);
 		$ajax_processor->execute();
 	}
+    public function ajax_init_cmd( $terminator = null ) {
+        $ajax_processor = new Static_Press_Ajax_Init(
+            $this->static_site_url,
+            $this->dump_directory,
+            $this->repository,
+            $this->remote_getter,
+            $terminator,
+            $this->date_time_factory,
+            $this->document_root_getter
+        );
+        return $ajax_processor->execute_cmd();
+    }
 
 	/**
 	 * Fetches URL from database and crate static files.
@@ -208,8 +220,20 @@ class Static_Press {
 		);
 		$ajax_processor->execute();
 	}
+    public function ajax_fetch_cmd( $terminator = null ) {
+        $ajax_processor = new Static_Press_Ajax_Fetch(
+            $this->static_site_url,
+            $this->dump_directory,
+            $this->repository,
+            $this->remote_getter,
+            $terminator,
+            $this->date_time_factory,
+            $this->document_root_getter
+        );
+        return $ajax_processor->execute_cmd();
+    }
 
-	/**
+    /**
 	 * Creates 404 error page html static file, 
 	 * 
 	 * @param Static_Press_terminator $terminator Terminator.
@@ -226,6 +250,19 @@ class Static_Press {
 		);
 		$ajax_processor->execute();
 	}
+
+    public function ajax_finalyze_cmd( $terminator = null ) {
+        $ajax_processor = new Static_Press_Ajax_Finalyze(
+            $this->static_site_url,
+            $this->dump_directory,
+            $this->repository,
+            $this->remote_getter,
+            $terminator,
+            $this->date_time_factory,
+            $this->document_root_getter
+        );
+        return $ajax_processor->execute_cmd();
+    }
 
 	/**
 	 * Replaces URL.
